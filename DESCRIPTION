@@ -1,0 +1,20 @@
+Package: tidysigns
+Type: Package
+Title: Sign Language Corpus Data in a Tidy Format
+Version: 0.1.0
+Authors@R: 
+    person("Carl", "Börstell", , "carl.borstell@uib.no", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-7549-4648"))
+Description: The tidysigns package assists with reading sign language corpus data
+    into a tidy format for data analysis in R.
+Encoding: UTF-8
+License: MIT + file LICENSE
+LazyData: true
+RoxygenNote: 7.3.1
+Imports:
+    dplyr,
+    lubridate,
+    purrr,
+    rlang,
+    tidyr,
+    xml2

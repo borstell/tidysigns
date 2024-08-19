@@ -1,6 +1,6 @@
 
 <!-- badges: start -->
-# tidysigns <img src="man/figures/logo.png" align="right" height="68" alt="" />
+# tidysigns <img src="man/figures/logo.png" align="right" height="100" alt="A hexagon badge with a yellow frame and a light blue background. Two hands in black and blue are displayed as if articulating a sign, above the text 'tidysigns'" />
 <!-- badges: end -->
 
 The goal of `tidysigns` is to facilitate getting sign language corpus data directly into R, and in a [tidy format](https://r4ds.hadley.nz/data-tidy#sec-tidy-data). 

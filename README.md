@@ -194,3 +194,14 @@ elan_annotations <- read_eaf("/path/to/elan_files/") |>
   find_turns()
 
 ```
+
+## Notes
+
+A few notes to be made:
+
+  - A `read_elan()` function was included in my older [`signglossR` package](https://github.com/borstell/signglossR/). The `read_eaf()` function of the `tidysigns` package is faster (and better).
+  - Other packages have functions to read ELAN files (`.eaf`), and some of these are faster and more efficient (see, e.g., [`phonfieldwork`](https://github.com/ropensci/phonfieldwork/blob/master/R/eaf_to_df.R)). My main goals with the `tidysigns` package are a) to use `tidyverse` style and functions as much as possible, and b) to add functionality/flexibility that I need for my own research purposes (e.g., specifying target tiers ahead of reading the files).
+  - The functions in `tidysigns` have been written with corpus data from mainly STS, NGT and DGS for testing. As such, the testing of all functionality is based on the structure of the corresponding corpora, and may not translate to another corpus if the structure and contents of files look very different.
+  - I have very limited experience with the iLex format (`.ilex`), so the `read_ilex()` function was coded with some trial and error on a few test files. However, the [DGS Korpus](https://www.sign-lang.uni-hamburg.de/meinedgs/ling/start-name_en.html) also has annotation files in `.eaf` format.
+
+**Do reach out if you have any praise, comments, questions or suggestions!**

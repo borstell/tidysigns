@@ -4,7 +4,13 @@
 \alias{read_eaf}
 \title{Read EAF files}
 \usage{
-read_eaf(path, tiers = c(), xpath = "", recursive = TRUE)
+read_eaf(
+  path,
+  tiers = c(),
+  xpath = "",
+  recursive = TRUE,
+  fill_child_timestamps = TRUE
+)
 }
 \arguments{
 \item{path}{Path to ELAN (.eaf) file(s)}
@@ -14,6 +20,8 @@ read_eaf(path, tiers = c(), xpath = "", recursive = TRUE)
 \item{xpath}{Specify a detailed XPath for tiers to be read}
 
 \item{recursive}{ELAN (.eaf) files are read recursively in path (defaults to `TRUE`)}
+
+\item{fill_child_timestamps}{Fill empty timestamps of child annotations (defaults to `TRUE`)}
 }
 \value{
 Tibble of the ELAN annotations

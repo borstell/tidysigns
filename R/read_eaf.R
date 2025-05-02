@@ -9,12 +9,17 @@
 #' @param tiers Specify tiers (TIER_ID or TIER_TYPE) to be read (default = `c()`)
 #' @param xpath Specify a detailed XPath for tiers to be read
 #' @param recursive ELAN (.eaf) files are read recursively in path (defaults to `TRUE`)
+#' @param fill_child_timestamps Fill empty timestamps of child annotations (defaults to `TRUE`)
 #'
 #' @return Tibble of the ELAN annotations
 #' @export
 #' @importFrom rlang .data
 #'
-read_eaf <- function(path, tiers = c(), xpath = "", recursive = TRUE) {
+read_eaf <- function(path,
+                     tiers = c(),
+                     xpath = "",
+                     recursive = TRUE,
+                     fill_child_timestamps = TRUE) {
 
   # Check that path is an existing file or directory
   stopifnot("Error: Path does not exist!" = (dir.exists(path) | file.exists(path) | (startsWith(path, "http") & endsWith(path, "eaf"))))
@@ -95,7 +100,41 @@ read_eaf <- function(path, tiers = c(), xpath = "", recursive = TRUE) {
         dplyr::mutate(file = basename(f),
                       duration = .data$end - .data$start) |>
         dplyr::relocate(dplyr::all_of("file"), .before = 1)
+
+      if (fill_child_timestamps) {
+
+
+        # Subset independent (parent) tier annotations
+        parent_annotations <-
+          annotations |>
+          dplyr::filter(is.na(.data$a_ref))
+
+        # Extract timestamps
+        parent_times <-
+          parent_annotations |>
+          dplyr::select(dplyr::all_of(c("file", "a", "ts1", "ts2", "tier", "start", "end", "duration"))) |>
+          dplyr::rename("a_ref" = "a")
+
+        # Subset dependent (child) tier annotations and combine with timestamps
+        child_annotations <-
+          annotations |>
+          dplyr::filter(!is.na(.data$a_ref)) |>
+          dplyr::select(-dplyr::all_of(c("ts1", "ts2", "start", "end", "duration"))) |>
+          dplyr::left_join(parent_times, by = dplyr::join_by("file" == "file",
+                                                             "a_ref" == "a_ref",
+                                                             "parent_ref" == "tier"))
+
+        # Combine and output all annotations
+        annotations <-
+          dplyr::bind_rows(parent_annotations,
+                           child_annotations)
+
       }
+
+    }
+
+    # Return final annotations
+    annotations
 
     }
 

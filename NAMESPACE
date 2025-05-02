@@ -2,7 +2,7 @@
 
 export(find_overlaps)
 export(find_turns)
-export(pivot_children)
+export(pivot_children_wider)
 export(read_cmdi)
 export(read_eaf)
 export(read_ilex)

@@ -29,7 +29,7 @@ functions: `find_turns()` and `find_overlaps()`.
 
 ## Installation
 
-You can install the development version of `tidysigns` like so:
+You can install `tidysigns` like so:
 
 ``` r
 devtools::install_github("borstell/tidysigns")
@@ -99,6 +99,10 @@ elan_data <-
 
 ```
 
+By default, `read_eaf()` fills child annotation timestamps from their parent 
+tier annotations (`fill_child_timestamps = TRUE`).
+
+
 ### Reading metadata files
 
 Some (sign language) corpora come with metadata files in the CMDI (`.cmdi`) 
@@ -128,8 +132,7 @@ metadata_content <-
 ### Modifying/enhancing the data
 
 With the `pivot_children()` function, you can with ELAN data quickly turn a 
-`tibble` with child annotations into a wide format (and pivot back to a long 
-format if you set `long = TRUE`):
+`tibble` with child annotations into a wide format:
 
 ``` r
 library(tidysigns)
@@ -142,7 +145,7 @@ elan_data <-
 
 ```
 > [!CAUTION] 
-> This pivots all child tiers to new columns and may result in `NA` values (also if pivoted back to a long format with `long = TRUE`).
+> This pivots all child tiers to new columns and may result in `NA` values.
 
 With the `find_overlaps()` function, you input a tibble of data (from either 
 `read_eaf()` or `read_ilex()`) and the output will output a tibble with columns 

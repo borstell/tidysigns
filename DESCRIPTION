@@ -1,7 +1,7 @@
 Package: tidysigns
 Type: Package
 Title: Sign Language Corpus Data in a Tidy Format
-Version: 0.1.1
+Version: 0.2.0
 Authors@R: 
     person("Carl", "Börstell", , "carl.borstell@uib.no", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7549-4648"))

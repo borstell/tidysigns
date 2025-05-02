@@ -101,7 +101,7 @@ read_eaf <- function(path,
                       duration = .data$end - .data$start) |>
         dplyr::relocate(dplyr::all_of("file"), .before = 1)
 
-      if (fill_child_timestamps) {
+      if (fill_child_timestamps & any(is.na(annotations$parent_ref))) {
 
 
         # Subset independent (parent) tier annotations

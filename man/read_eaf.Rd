@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_eaf.R
 \name{read_eaf}
 \alias{read_eaf}
-\title{Reads ELAN (.eaf) file(s) from a path input}
+\title{Read EAF files}
 \usage{
 read_eaf(path, tiers = c(), xpath = "", recursive = TRUE)
 }
@@ -19,5 +19,8 @@ read_eaf(path, tiers = c(), xpath = "", recursive = TRUE)
 Tibble of the ELAN annotations
 }
 \description{
-Reads ELAN (.eaf) file(s) from a path input
+Reads ELAN (.eaf) annotation file(s) from a path input,
+whether a direct filename or a directory of multiple files.
+Specific tiers or tier types can be targeted through:
+`tiers = c("tier_type" = "your_tiername", "tier_type" = "your_tier_type")`
 }

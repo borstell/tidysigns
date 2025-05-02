@@ -1,4 +1,10 @@
-#' Pivot ELAN annotations from child tiers to a wide format
+#' Pivot child tier annotations
+#'
+#' [Experimental]
+#' Pivot ELAN annotations from child tiers to a wide format.
+#' Note: Pivots empty values as NA (wide and long)! A better
+#' option may be to use `dplyr::_join()` to join relevant
+#' child tier annotations to their associated parents.
 #'
 #' @param data A tibble of annotations
 #' @param long Whether the child tiers are pivoted back to long format (default = `FALSE`)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_ilex.R
 \name{read_ilex}
 \alias{read_ilex}
-\title{Reads iLex (.ilex) file(s) from a path input}
+\title{Read iLex files}
 \usage{
 read_ilex(path, recursive = TRUE)
 }
@@ -15,5 +15,7 @@ read_ilex(path, recursive = TRUE)
 Tibble of the iLex annotations
 }
 \description{
+[Experimental]
 Reads iLex (.ilex) file(s) from a path input
+Note: Not extensively tested!
 }

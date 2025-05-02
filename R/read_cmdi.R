@@ -1,13 +1,19 @@
-#' Reads CMDI (.cmdi) file(s) from a path input
+#' Read CMDI files
+#'
+#' Reads CMDI (.cmdi) file(s) from a path input.
+#' Either "actor" or "content" metadata can be
+#' read, based on the `meta` argument input.
 #'
 #' @param path Path to CMDI (.cmdi) metadata file(s)
-#' @param meta Which metadata to be collected: "signers"/"content" (default = `"signers"`)
+#' @param meta Which metadata to be collected: "actor"/"content" (default = `"actor"`)
 #' @param recursive CMDI (.cmdi) files are read recursively in path (defaults to `TRUE`)
 #'
 #' @return Tibble of the CMDI data
 #' @export
 #'
-read_cmdi <- function(path, meta = "signers", recursive = TRUE) {
+read_cmdi <- function(path,
+                      meta = "actor",
+                      recursive = TRUE) {
 
   # Check that path is an existing file or directory
   stopifnot("Error: Path does not exist!" = (dir.exists(path) | file.exists(path) | (startsWith(path, "http") & endsWith(path, "cmdi"))))
@@ -39,7 +45,7 @@ read_cmdi <- function(path, meta = "signers", recursive = TRUE) {
       xml2::xml_find_first(".//*[local-name()='Name']") |>
       xml2::xml_text()
 
-    if (tolower(meta) != "signers") {
+    if (tolower(meta) != "actor") {
 
       # Extract date
       filedate <-
@@ -69,7 +75,7 @@ read_cmdi <- function(path, meta = "signers", recursive = TRUE) {
 
     } else {
 
-      # Collect file signer metadata in a tibble
+      # Collect file actor metadata in a tibble
       xml |>
         xml2::xml_find_all(".//*[local-name()='SL-Actor' or local-name()='Actor']") |>
         purrr::map(~ dplyr::tibble(

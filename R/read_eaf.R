@@ -1,4 +1,9 @@
-#' Reads ELAN (.eaf) file(s) from a path input
+#' Read EAF files
+#'
+#' Reads ELAN (.eaf) annotation file(s) from a path input,
+#' whether a direct filename or a directory of multiple files.
+#' Specific tiers or tier types can be targeted through:
+#' `tiers = c("tier_type" = "your_tiername", "tier_type" = "your_tier_type")`
 #'
 #' @param path Path to ELAN (.eaf) file(s)
 #' @param tiers Specify tiers (TIER_ID or TIER_TYPE) to be read (default = `c()`)

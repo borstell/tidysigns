@@ -2,7 +2,7 @@
 % Please edit documentation in R/find_overlaps.R
 \name{find_overlaps}
 \alias{find_overlaps}
-\title{Find overlaps in annotations within and across participants}
+\title{Find overlaps}
 \usage{
 find_overlaps(data)
 }
@@ -13,5 +13,6 @@ find_overlaps(data)
 A tibble with added columns of overlaps (self and other)
 }
 \description{
-Find overlaps in annotations within and across participants
+Find annotations that overlap, whether within or across participants.
+Inputs a data frame structured like those returned from `read_eaf()`
 }

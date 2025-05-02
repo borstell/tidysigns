@@ -2,14 +2,14 @@
 % Please edit documentation in R/read_cmdi.R
 \name{read_cmdi}
 \alias{read_cmdi}
-\title{Reads CMDI (.cmdi) file(s) from a path input}
+\title{Read CMDI files}
 \usage{
-read_cmdi(path, meta = "signers", recursive = TRUE)
+read_cmdi(path, meta = "actor", recursive = TRUE)
 }
 \arguments{
 \item{path}{Path to CMDI (.cmdi) metadata file(s)}
 
-\item{meta}{Which metadata to be collected: "signers"/"content" (default = `"signers"`)}
+\item{meta}{Which metadata to be collected: "actor"/"content" (default = `"actor"`)}
 
 \item{recursive}{CMDI (.cmdi) files are read recursively in path (defaults to `TRUE`)}
 }
@@ -17,5 +17,7 @@ read_cmdi(path, meta = "signers", recursive = TRUE)
 Tibble of the CMDI data
 }
 \description{
-Reads CMDI (.cmdi) file(s) from a path input
+Reads CMDI (.cmdi) file(s) from a path input.
+Either "actor" or "content" metadata can be
+read, based on the `meta` argument input.
 }

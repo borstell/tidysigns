@@ -2,7 +2,7 @@
 % Please edit documentation in R/pivot_children.R
 \name{pivot_children}
 \alias{pivot_children}
-\title{Pivot ELAN annotations from child tiers to a wide format}
+\title{Pivot child tier annotations}
 \usage{
 pivot_children(data, long = FALSE)
 }
@@ -15,5 +15,9 @@ pivot_children(data, long = FALSE)
 A tibble with dependent (child) annotations in wide format
 }
 \description{
-Pivot ELAN annotations from child tiers to a wide format
+[Experimental]
+Pivot ELAN annotations from child tiers to a wide format.
+Note: Pivots empty values as NA (wide and long)! A better
+option may be to use `dplyr::_join()` to join relevant
+child tier annotations to their associated parents.
 }

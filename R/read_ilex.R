@@ -1,4 +1,8 @@
+#' Read iLex files
+#'
+#' [Experimental]
 #' Reads iLex (.ilex) file(s) from a path input
+#' Note: Not extensively tested!
 #'
 #' @param path Path to iLex (.ilex) file(s)
 #' @param recursive iLex (.ilex) files are read recursively in path (defaults to `TRUE`)
@@ -8,7 +12,6 @@
 #' @importFrom rlang .data
 #'
 read_ilex <- function(path, recursive = TRUE) {
-
 
   # Check that path is an existing file or directory
   stopifnot("Error: Path does not exist!" = (dir.exists(path) | file.exists(path) | (startsWith(path, "http") & endsWith(path, "ilex"))))

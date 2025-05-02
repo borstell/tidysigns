@@ -2,7 +2,7 @@
 % Please edit documentation in R/find_turns.R
 \name{find_turns}
 \alias{find_turns}
-\title{Infer turns from data}
+\title{Find turns}
 \usage{
 find_turns(data, method = "sequential", interval = 500, simplify = FALSE)
 }
@@ -19,5 +19,6 @@ find_turns(data, method = "sequential", interval = 500, simplify = FALSE)
 A tibble with inferred turns added
 }
 \description{
-Infer turns from data
+Infer turns from annotations in data frames like those returned by `read_eaf()`.
+Uses one of two methods ("interval" or "sequential") to infer turns.
 }

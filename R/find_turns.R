@@ -1,4 +1,7 @@
-#' Infer turns from data
+#' Find turns
+#'
+#' Infer turns from annotations in data frames like those returned by `read_eaf()`.
+#' Uses one of two methods ("interval" or "sequential") to infer turns.
 #'
 #' @param data A tibble of annotations
 #' @param method Method for inferring turns, "interval" or "sequential" (default = "sequential")

@@ -1,7 +1,7 @@
 #' Find overlaps
 #'
 #' Find annotations that overlap, whether within or across participants.
-#' Inputs a data frame structured like those returned from `read_eaf()`
+#' Inputs a data frame structured like those returned from `read_eaf()`.
 #'
 #' @param data A tibble of annotations
 #'

@@ -14,5 +14,5 @@ A tibble with added columns of overlaps (self and other)
 }
 \description{
 Find annotations that overlap, whether within or across participants.
-Inputs a data frame structured like those returned from `read_eaf()`
+Inputs a data frame structured like those returned from `read_eaf()`.
 }

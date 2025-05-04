@@ -2,24 +2,23 @@
 #'
 #' [Experimental]
 #' Pivot ELAN annotations from child tiers to a wide format.
-#' Note: Pivots empty values as NA (wide and long)! A better
-#' option may be to use `dplyr::_join()` to join relevant
-#' child tier annotations to their associated parents.
+#' Note: Pivots empty values as NA! A better option may be to use
+#' `dplyr::_join()` to join relevant child tier annotations to their
+#' associated parents, or to `dplyr::rename()` columns before pivoting.
 #'
 #' @param data A tibble of annotations
-#' @param long Whether the child tiers are pivoted back to long format (default = `FALSE`)
 #'
 #' @return A tibble with dependent (child) annotations in wide format
 #' @export
 #' @importFrom rlang .data
 #'
-pivot_children <- function(data, long = FALSE) {
+pivot_children <- function(data) {
 
   # Subset independent (parent) tier annotations
   parent_annotations <-
     data |>
     dplyr::filter(is.na(.data$a_ref)) |>
-    dplyr::select(-dplyr::all_of("a_ref"))
+    dplyr::select(-dplyr::all_of(c("a_ref", "parent_ref")))
 
   # Subset dependent (child) tier annotations
   child_annotations <-
@@ -40,24 +39,6 @@ pivot_children <- function(data, long = FALSE) {
                                                             "a" == "a_ref",
                                                             "tier" == "parent_ref"))
 
-  if (long) {
-
-    long_children <-
-      all_annotations |>
-      dplyr::mutate(parent_ref = .data$tier) |>
-      dplyr::select(-dplyr::all_of(c("tier", "annotation"))) |>
-      tidyr::pivot_longer(cols = dplyr::all_of(child_tiers),
-                          names_to = "tier",
-                          values_to = "annotation") |>
-      dplyr::filter(.data$tier %in% child_tiers)
-
-    parent_annotations |>
-      dplyr::bind_rows(long_children)
-
-  } else {
-
-    all_annotations
-
-  }
+  return(all_annotations)
 
 }

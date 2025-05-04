@@ -4,12 +4,10 @@
 \alias{pivot_children}
 \title{Pivot child tier annotations}
 \usage{
-pivot_children(data, long = FALSE)
+pivot_children(data)
 }
 \arguments{
 \item{data}{A tibble of annotations}
-
-\item{long}{Whether the child tiers are pivoted back to long format (default = `FALSE`)}
 }
 \value{
 A tibble with dependent (child) annotations in wide format
@@ -17,7 +15,7 @@ A tibble with dependent (child) annotations in wide format
 \description{
 [Experimental]
 Pivot ELAN annotations from child tiers to a wide format.
-Note: Pivots empty values as NA (wide and long)! A better
-option may be to use `dplyr::_join()` to join relevant
-child tier annotations to their associated parents.
+Note: Pivots empty values as NA! A better option may be to use
+`dplyr::_join()` to join relevant child tier annotations to their
+associated parents, or to `dplyr::rename()` columns before pivoting.
 }
